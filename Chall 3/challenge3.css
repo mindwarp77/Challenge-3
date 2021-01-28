@@ -1,0 +1,276 @@
+/*# Front-end Style Guide
+
+## Layout
+
+The designs were created to the following widths:
+
+- Mobile: 375px
+- Desktop: 1440px
+
+## Colors
+
+### Primary
+
+- Soft Cyan (Full Slider Bar): hsl(174, 77%, 80%)
+- Strong Cyan (Slider Backround): hsl(174, 86%, 45%)
+- Light Grayish Red (Discount Background): hsl(14, 92%, 95%)
+- Light Red (Discount Text): hsl(15, 100%, 70%)
+- Pale Blue (CTA Text): hsl(226, 100%, 87%)
+
+### Neutral
+
+- White (Pricing Component Background): hsl (0, 0%, 100%)
+- Very Pale Blue (Main Background): hsl(230, 100%, 99%)
+- Light Grayish Blue (Empty Slider Bar): hsl(224, 65%, 95%)
+- Light Grayish Blue (Toggle Background): hsl(223, 50%, 87%)
+- Grayish Blue (Text): hsl(225, 20%, 60%)
+- Dark Desaturated Blue (Text & CTA Background): hsl(227, 35%, 25%)
+
+## Typography
+
+### Body Copy
+
+- Font size (Introductory Paragraph): 15px
+
+### Font
+
+- Family: [Manrope](https://fonts.google.com/specimen/Manrope)
+- Weights: 600, 800
+*/
+html, body {
+    font-family: Manrope, sans-serif;
+    color:hsl(225, 20%, 60%);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background:hsl(230, 100%, 99%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#bg-pattern { /*Pos. et taille svg background*/
+    position: absolute;
+    width: 100%;
+    z-index: -6;
+    top: 0;
+}
+
+.main-title {/*Titre principal*/
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding:2em 0;
+    margin: 3em;
+}
+
+@media screen and (max-width:768px){/*titre responsive*/
+    .main-title{
+        width: 90%;
+        text-align: center;
+        margin: 1em;
+    }
+}
+
+.main-title h2 { /*H2 titre principal*/
+    margin: 0.3em;
+    color:hsl(227, 35%, 25%);
+    font-weight: 800;
+}
+
+.main-title h3 { /*H3 titre principal*/
+    font-weight: 600;
+    margin: 0em;
+}
+
+#title-bg { /*svg background titre*/
+    position: absolute;
+    z-index: -6;
+}
+
+.main-thumb { /*Onglet principal*/
+    width: 35%;
+    background: #fff;
+    border-radius: 10px;
+    
+}
+
+@media screen and (max-width:768px){ /*onglet principal responsive*/
+    .main-thumb{
+        width: 90%;
+    }
+}
+/*SLIDER*/
+.slide-range-container { /*Dimensions slider*/
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.valeurs { /*valeurs affichée slider*/
+    display: flex;
+    align-items: center;
+}
+
+.valeurs p { /*texte slider*/
+    margin: 2em;
+}
+
+.pageviews { /*pageviews*/
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: .2em;
+    font-weight: 800;
+}
+
+.price-val { /*affichage valeurs prix*/
+    font-size:2em;
+    color:hsl(227, 35%, 25%);
+}
+
+.slider { /*apparence slider*/
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80%;
+    height: 12.5px;
+    background-color:  hsl(174, 77%, 80%);
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .02s;
+    transition:opacity .2s;
+}
+
+.slider:hover { /*slider hover*/
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb{ 
+    -webkit-appearance:none;
+    width: 40px;
+    height: 40px;
+    background: url(icon-slider.svg);
+    background-color: hsl(174, 86%, 45%);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 10px 10px hsla(174, 86%, 45%, 0.719);
+}
+
+.slider::-moz-range-thumb{
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+/*END SLIDER*/
+/*BILLING TOGGLE*/
+.billing { /*formules prix*/
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1em 0;
+}
+
+.switch{ /*Box around slider*/
+    position: relative;
+    display: inline-block;
+    width: 3em;
+    height: 1.5em;
+    margin: 1em;
+}
+
+.switch input { /* Hide default HTML checkbox*/
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.check-slider {/*Slider formules*/
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: hsl(223, 50%, 87%);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 1.2em;
+}
+
+.check-slider:before {
+    position: absolute;
+    content: "";
+    height: 1.1em;
+    width: 1.1em;
+    left: 0.25em;
+    bottom: 0.15em;
+    background-color: #fff;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 1.1em;
+}
+
+.check-input:checked + .check-slider{
+    background-color: hsl(174, 86%, 45%);
+}
+
+.check-input:focus + .check-slider{
+    box-shadow:0 0 1px hsl(174, 86%, 45%);
+}
+
+.check-input:checked + .check-slider:before{
+    -webkit-transform: translateX(1.4em);
+    -moz-transform: translateX(1.4em);
+    transform: translateX(1.4em);
+
+}
+/*END BILLING TOGGLE*/
+/*BILLING*/
+.billing p {
+    font-size: 0.8em;
+}
+.discount {
+    margin: 0.5em;
+    padding: 0.25em 0.5em;
+    background-color: hsl(14, 92%, 95%);
+    color:hsl(15, 100%, 70%);
+    border-radius: 10px;
+}
+
+.trial {
+    border-top: 1px solid hsla(225, 20%, 60%, 0.562);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.details {
+    list-style: url(icon-check.svg);
+    margin: 2em -1em;
+}
+
+.details-list {
+    font-size:0.8em;
+}
+
+.trial-btn {
+    width: 25%;
+    padding: 1em;
+    font-family: Manrope, sans-serif;
+    border:none;
+    border-radius: 25px;
+    background: hsl(227, 35%, 25%);
+    color:hsl(226, 100%, 87%);
+    font-size: 0.8em;
+    cursor: pointer;
+}

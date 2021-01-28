@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name = "viewport" content="width:device-width, initial-scale:1">
+        <link rel="stylesheet" href="challenge3.css"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap" rel="stylesheet">       
+        <title>Challenge 3</title>
+    </head>
+    <body>
+        <img src="bg-pattern.svg" alt="background pattern" id="bg-pattern">
+        <div class="main-title">
+            <img src="pattern-circles.svg" alt="background main title" id="title-bg">
+            <h2>Simple, traffic-based pricing</h2>
+            <h3>Sign-up for our 30 days trial. No credit card required.</h3>
+        </div>
+        <div class="main-thumb">
+            <div class="slide-range-container">
+                <div class="valeurs">
+                    <p class="pageviews"><span id="valeur2"></span>K pageviews</p>
+                    <p><span class="price-val">$<span id="valeur"></span>.00</span> / months</p>
+                </div>
+                <input type="range" min="1.00" max="32.00" value="16.00" class="slider" id="myRange">
+            </div>
+            <div class="billing">
+                <p>Monthly Billing
+                <label class="switch">
+                    <input type="checkbox" class="check-input" id="billing" onclick="yearBilling()">
+                    <span class="check-slider"></span>
+                </label>
+                Yearly Billing <span class="discount">25% Discount</span></p>
+            </div>
+            <div class="trial">
+                <ul class="details">
+                    <li class="details-list">Unlimited websites</li>
+                    <li class="details-list">100% data Ownership</li>
+                    <li class="details-list">Email reports</li>
+                </ul>
+                <input type="button" class="trial-btn" id="trial" value="Start my trial">
+            </div>
+        </div>
+        <script>
+            var slider = document.getElementById("myRange");
+            var output = document.getElementById("valeur");
+            var output2 = document.getElementById("valeur2");
+            var output3 = document.getElementById("billing");
+            output.innerHTML = slider.value;
+            output2.innerHTML = slider.value;
+            function yearBilling (){
+                output.innerHTML = slider.value * 9;
+            }
+            slider.oninput = function (){
+                output.innerHTML = this.value;
+                output2.innerHTML = this.value * 6.25;
+            }
+        </script>
+    </body>
+</html>
